@@ -1,0 +1,140 @@
+Building configuration...
+
+
+Current configuration : 3462 bytes
+!
+! Last configuration change at 09:50:25 UTC Fri Feb 6 2026 by admin
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname R13
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$I6yx$vKaAfH6BxSsuSa68YW3/P.
+!
+no aaa new-model
+!
+ip domain name moriczref.hu
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-443254718
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-443254718
+ revocation-check none
+ rsakeypair TP-self-signed-443254718
+!
+!
+crypto pki certificate chain TP-self-signed-443254718
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 34343332 35343731 38301E17 0D323630 32303630 39333533 
+  375A170D 33303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3434 33323534 
+  37313830 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 
+  82010100 E7829B48 734EE46F F2BB3CE8 3449D9F9 44FAF043 2F53FEC3 E1B3DFD3 
+  6B4184E7 CC82C64C 78A55982 2625F708 7B96D932 8BF6800C 86AAC0AC 96C48EA6 
+  40D544BC 46B16EE1 18A6E440 779AE489 B2218F25 2697E39B 02EA02FE 8CC0D50B 
+  D51CFF82 213CF037 65BD545E D668C622 8FF58625 40BAC96A 178B396F CD38E25E 
+  DF31272F 5C4F3431 4A7EA15F 070C13A7 DA5D1607 D1E5E806 80D2B738 35896624 
+  5BE31AE5 C0B94FB9 A1052A51 7701E08F 42617377 D74701E8 F849ACB6 85E703DE 
+  4E09C989 A8788FE2 3386F43A 9EF2973D 329C522E 71FB8024 1E09AA0C 418C7429 
+  547F40B9 AF6E0BC0 DA9A5980 A892DBE7 E2680A3D 2660622C 2C5AD709 004F8972 
+  CDD44CB9 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 
+  0603551D 23041830 168014EE 3ED91830 5FEE005F 0B8F7104 E61FF1BA B024A030 
+  1D060355 1D0E0416 0414EE3E D918305F EE005F0B 8F7104E6 1FF1BAB0 24A0300D 
+  06092A86 4886F70D 01010505 00038201 010085C2 B1E66D02 98077FA4 43D5562B 
+  92CADBC5 BEDE2BF3 EF17FBBD E7F5E8E7 85B5CA78 B9214FB3 3CB31B8A 9054298C 
+  7AF4ABCE 41BE7AA3 910B3F4E C6954630 BDF687B0 C397B216 7D608D09 2A502A71 
+  10E93F01 FA54A6F2 C4E1A65A 64A27744 0E727C17 1EC87E89 C93F54F2 AEFA754C 
+  447E3FF5 3A5FCDDC B803D8D0 03A5EB2D 2B8B7261 04FDA492 7F417F9A 8C480CB0 
+  19EBDB66 67A4ACDA 9B0F04A1 208F3C30 B32E6BE6 55C4DCE9 AAA53689 3D1A2230 
+  DED22709 32499617 5AA1F62B 55B01590 6F96753C 5D879EB9 EC473E1C 0CD1857C 
+  727989BF CCE57B03 17ED7204 08F4AFB8 7A0096F1 46A79734 3A4E4F1D B19E360E 
+  7629779D 6B2E6AC7 11A3AD53 8C3D605A 1221
+  	quit
+!
+license udi pid ISR4221/K9 sn FGL2512LAQG
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+!
+username admin secret 5 $1$UWTe$nQCf1rWkgju51Mxw0lDkB1
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ ip address 192.168.1.1 255.255.255.0
+ negotiation auto
+!
+interface Serial0/1/0
+!
+interface Serial0/1/1
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+control-plane
+!
+banner motd ^CJogosulatlan hozzaferes tilos!^C
+!
+line con 0
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+!
+!
+!
+!
+end
