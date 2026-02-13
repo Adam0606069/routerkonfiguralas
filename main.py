@@ -17,14 +17,9 @@ net_connect.send_config_set(["hostname S13", "banner motd #Jogosulatlan hozzafer
 output=net_connect.send_command("show running-config")
 print(output)
 
-with open("switch_running_config.txt", "w", encoding="utf-8") as f:
+with open("running_config.txt", "w", encoding="utf-8") as f:
 	f.write(output)
-	
-# output2=net_connect.send_command("show running-config | section interface")
-# print(output2)
 
-# with open("switch_running_config_interfaces.txt", "w", encoding="utf-8") as f:
-# 	f.write(output2)
 
 
 #config parancsok vége

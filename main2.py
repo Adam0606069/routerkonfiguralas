@@ -1,0 +1,1 @@
+#Írj egy programot, ami bejárja a 3 switch-et és mind a háromra beállítja ugyan azt a VTP domain nevet és VTP password-öt.
